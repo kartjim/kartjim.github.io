@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-todoList</title>
+    <link rel="shortcut icon" href="https://v3.cn.vuejs.org/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./todo.css">
+</head>
+
+<body>
+    <div id="todo-app">
+        <h1>{{ name }}</h1>
+        <div class="todo-box">
+            <header>
+                <input type="text" 
+                    placeholder="输入待办事项~" 
+                    autofocus autocomplete="off"
+                    v-model="newTodo"
+                    @keyup.enter="addTodo">
+            </header>
+            <section v-show="todos.length" v-cloak>
+                <ul>
+                    <li v-for="todo in todos" :key="todo.id"
+                        :class="{ completed: todo.completed }">
+                        <div class="todo-item">
+                            <div>
+                                <input type="checkbox" v-model="todo.completed" :id="'checkbox' + todo.id" />
+                                <label :for="'checkbox' + todo.id">{{ todo.title }}</label>
+                            </div>
+                            <button @click="removeTodo(todo)">&times;</button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div v-show="todos.length" v-cloak class="control">
+                <div class="info">
+                    <span>
+                        {{ completedLength }}/{{ todos.length }}
+                    </span>
+                    <button class="clear-completed" @click="removeCompleted" v-show="completedLength">
+                        清除已完成的项目
+                    </button>
+                </div>
+                <div class="filter">
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>{{ footer }}</p>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/vue@3.2.26"></script>
+    <script src="./todo.js"></script>
+</body>
+
+</html>

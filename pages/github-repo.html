@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository API</title>
+    <link rel="stylesheet" href="../css/gr.css">
+    <link rel="stylesheet" href="../css/public/styles.css">
+</head>
+<body>
+    <div id="demo">
+        <h2>Latest <em>hexo-theme-delicate</em> Commits</h2>
+        <p class="selector">
+            <span v-for="branch in branches">
+                <input type="radio"
+                       :id="branch"
+                       :value="branch"
+                       name="branch"
+                       v-model="currentBranch"
+                       />
+                <label :for="branch">{{ branch }}</label>
+            </span>
+        </p>
+        <p style="color:blue">@ {{ currentBranch }}</p>
+        <ul class="commit-message">
+            <li v-for="data in message">
+                <a href="#" :title='data.sha'>{{ data.sha.slice(0,9) }}</a>
+                -
+                <span class='mess'>{{ formatData(data.commit.message) }}</span>
+                <br>
+                by
+                <span class="author">{{ data.commit.author.name }}</span>
+                at
+                <span class="time">{{ formateDate(data.commit.author.date) }}</span>
+            </li>
+        </ul>
+        <br>
+        <button><a href="/">Return</a></button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../js/gr.js"></script>
+</body>
+</html>
