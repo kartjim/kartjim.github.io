@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js2020</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="link" id="list">
+        <div class="js2020">
+            <h2>{{ js2020 }}</h2>
+            <ol>
+                <li>
+                    <div class="newName">globalThis</div>
+                    <button v-on:click="consoleGlobaleThis">输出globalThis</button>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>Window</td>
+                            <td>Self</td>
+                            <td>globalThis</td>
+                        </tr>
+                        <tr>
+                            <td>浏览器</td>
+                            <td class="yes">√</td>
+                            <td class="yes">√</td>
+                            <td class="yes">√</td>
+                        </tr>
+                        <tr>
+                            <td>web workers</td>
+                            <td class="x">x</td>
+                            <td class="yes">√</td>
+                            <td class="yes">√</td>
+                        </tr>
+                        <tr>
+                            <td>Node</td>
+                            <td class="x">x</td>
+                            <td class="x">x</td>
+                            <td class="yes">√</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div class="newName">promise.allSettled</div>
+                    <div>
+                        <pre>
+<code>let p1 = new Promise((resolve, reject) => </code>
+    <code>setTimeout(resolve(1), 200));</code>
+<code>let p2 = new Promise((resolve, reject) => </code>
+    <code>setTimeout(reject("error"), 300));</code>
+<code>let p3 = new Promise((resolve, reject) => </code>
+    <code>setTimeout(resolve(2), 400));</code>
+<code></code>
+<code>Promise.all([p1,p2,p3])</code>
+<code>  .then((res) => console.log(res))</code>
+<code>  .catch((e) => console.log(e))</code></pre>
+<div>使用: promise.allSettled:</div>
+<pre>
+<code>Promise.allSettled([p1,p2,p3])</code>
+<code>  .then((res) => console.log(res))</code>
+<code>  .catch((e) => console.log(e))</code></pre>
+                    </div>
+                    <button v-on:click="pas">输出</button>
+                </li>
+                <li>
+                    <div class="newName">空位合并操作符(Nullish coalescing Operator) - ??</div>
+                    <div>如果属性不存在，则为 ?? 后的值；如果属性存在，就是该属性的值，即使该值是0</div>
+                    <button v-on:click="nco">输出</button>
+                </li>
+                <li>
+                    <div class="newName">可选链操作符(Optinal Chaining Operator)</div>
+                    <div>当需要访问嵌套在对象内部好几层的属性时，如果属性不存在会报错； - 把 . 换成 ?. </div>
+                    <button v-on:click="oco">输出</button>
+                </li>
+                <li>
+                    <div class="newName">BigInt</div>
+                    <div>可以表示更大的数字 - 在定义时数字后面加上 n 即可；或者使用构造函数 BigInt() 创建；</div>
+                    <button v-on:click="bigint">输出</button>
+                </li>
+            </ol>
+        </div>
+        <div class="js2021">
+            <h2>{{ js2021 }}</h2>
+            <ol>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    js2020: 'JavaScript 2020 新特性',
+                    js2021: 'JavaScript 2021 新特性',
+                }
+            },
+            methods: {
+                consoleGlobaleThis(){
+                    console.log("globalThis: ",globalThis);
+                },
+                pas(){
+                    let p1 = new Promise((resolve, reject) =>
+                        setTimeout(resolve(1), 200));
+                    let p2 = new Promise((resolve, reject) =>
+                        setTimeout(reject("error"), 300));
+                    let p3 = new Promise((resolve, reject) =>
+                        setTimeout(resolve(2), 400));
+                    // Promise.all([p1,p2,p3])
+                    //     .then((res) => console.log(res))
+                    //     .catch((e) => console.log(e))
+
+                    Promise.allSettled([p1,p2,p3])
+                        .then((res) => console.log(res))
+                        .catch((e) => console.log(e))
+                },
+                nco(){
+                    let s = {
+                        's': 0
+                    }
+                    console.log(s['s']??100);
+                    console.log(s['a']??100);
+                },
+                oco(){
+                    let m = {};
+                    console.log(m?.info?.name);
+                },
+                bigint(){
+                    let a = 12n;
+                    let b = BigInt(23);
+                    console.log(a);
+                    console.log(b);
+                }
+            },
+        }).mount('#list');
+    </script>
+</body>
+
+</html>
