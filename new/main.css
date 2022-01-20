@@ -14,23 +14,40 @@ body {
     border: 1px solid #e1e1e1;
     /* overflow: hidden;padding: 20px; */
 }
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-clip: padding-box; /* important */
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: #dfdfdf;
+}
 /* js2020 */
 .js2020{
     border-bottom: 1px solid #afafaf;
     padding: 20px;
 }
-.js2020 ol{
+/* js2021 */
+.js2021{
+    padding: 20px;
+}
+/* public */
+ol{
     padding-left: 30px;
 }
-.js2020 ol li{
+ol li{
     margin-bottom: 10px;
+    max-width: 100%;
+    overflow: auto;
 }
-.js2020 ol li .newName{
+ol li .newName{
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
 }
-.js2020 ol li button{
+ol li button{
     outline: none;
     border: 1px solid #888;
     border-radius: 3px;
@@ -39,41 +56,38 @@ body {
     background-color: transparent;
     margin: 5px;
 }
-.js2020 ol li button:hover{
+ol li button:hover{
     background-color: #f3f3f3;
 }
-.js2020 ol li button:active{
+ol li button:active{
     transform: scale(0.97);
 }
-.js2020 ol li table{
+ol li table{
     border-collapse: collapse;
 }
-.js2020 ol li table tr td{
+ol li table tr td{
     border: 1px solid #ccc;
     border-collapse: separate;
     padding: 5px;
     font-size: 18px;
 }
-.js2020 ol li table tr td.x{
+ol li table tr td.x{
     color: red;
 }
-.js2020 ol li table tr td.yes{
+ol li table tr td.yes{
     color: rgb(9, 165, 9);
 }
-.js2020 ol li table tr:nth-child(2n){
+ol li table tr:nth-child(2n){
     background-color: #ddd;
 }
-/* js2021 */
-.js2021{
-    padding: 20px;
-}
-/* public */
 pre{
     background-color: #f8f7f6;
     padding: 5px 10px;
     font-size: 16px;
     border: 1px solid #dedede;
     border-radius: 10px;
+    max-width: 100%;
+    overflow: auto;
 }
 pre code{
     color: rgb(4, 4, 65);

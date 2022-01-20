@@ -85,7 +85,33 @@
         <div class="js2021">
             <h2>{{ js2021 }}</h2>
             <ol>
-                <li></li>
+                <li>
+                    <div class="newName">String.replaceAll</div>
+                    <div>相当于正则表达式中的 /g </div>
+                    <button v-on:click="sra">输出</button>
+                </li>
+                <li>
+                    <div class="newName">Promise.any</div>
+                    <div>只要其中任一promise成功即可返回，忽略reject;</div>
+                    <div>与Promise.any()方法不同，Promise.race()方法返回最快的那个。</div>
+                    <button v-on:click="pa">输出</button>
+                </li>
+                <li>
+                    <div class="newName">||= &&= </div>
+                    <div>a ||= b;a为true时，把b赋值给a</div>
+                    <div>a &&= b;a，b都为true时，把b赋值给a</div>
+                    <button v-on:click="nul()">输出</button>
+                </li>
+                <li>
+                    <div class="newName">10_000_000</div>
+                    <div>可以用 _ 分割数字，更清楚的看到位数</div>
+                    <button v-on:click="number_(10_000_000)">输出</button>
+                </li>
+                <li>
+                    <div class="newName">私有方法和字段 - #</div>
+                    <div></div>
+                    <button @click="pfun">输出</button>
+                </li>
             </ol>
         </div>
     </div>
@@ -133,6 +159,47 @@
                     let b = BigInt(23);
                     console.log(a);
                     console.log(b);
+                },
+                sra(){
+                    const s = 'string replace all';
+                    console.log('s:',s)
+                    console.log("s.replace('l','#'):",s.replace('l','#'))
+                    console.log("s.replaceAll('l','#'):",s.replaceAll('l','#'))
+                    console.log("s.replace(/[l]/g,'#')",s.replace(/[l]/g,'#'))
+                },
+                pa(){
+                    let p1 = new Promise((resolve, reject) =>
+                        setTimeout(resolve(1), 2000));
+                    let p2 = new Promise((resolve, reject) =>
+                        setTimeout(reject("error"), 200));
+                    let p3 = new Promise((resolve, reject) =>
+                        setTimeout(resolve(2), 3000));
+                    Promise.race([p2,p1,p3])
+                        .then((res) => console.log(res))
+                        .catch((e) => console.log(e))
+
+                    Promise.any([p1,p2,p3])
+                        .then((res) => console.log(res))
+                        .catch((e) => console.log(e))
+                },
+                nul(){
+                    let a = '',b = 'b',c = 'c';
+                    a ||= b;
+                    c &&= b;
+                    console.log(a);
+                    console.log(c);
+                },
+                number_(number){
+                    console.log(number);
+                },
+                pfun(){
+                    class Circle{
+                        static #PI = 3.14;
+                        static area(r){ // 静态方法。不能在类的实例上调用静态方法，而应该通过类本身调用。
+                            return r*r*Circle.#PI;
+                        }
+                    }
+                    console.log(Circle.area(3));
                 }
             },
         }).mount('#list');
