@@ -114,14 +114,32 @@
                 </li>
             </ol>
         </div>
+        <div class="debounceAthrottling">
+            <h2>{{ d2a }}</h2>
+            <ol>
+                <li>
+                    <div class="newName">节流</div>
+                    <div>当持续触发事件时，保证一定时间段内只调用一次事件处理函数。</div>
+                    <button v-on:click="throttle(thr,2000)">输出</button>
+                </li>
+                <li>
+                    <div class="newName">防抖</div>
+                    <div>当持续触发事件时,一定时间段内没有再触发事件,事件处理函数才会执行一次,如果设定的时间到来之前,又一次触发了事件,就重新开始延时。</div>
+                    <div>类似于电梯门的原理</div>
+                    <button @click="debounce(deb,1000)">输出</button>
+                </li>
+            </ol>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script>
+        var timer,timer2; // 节流与防抖需要的全局变量
         const app = Vue.createApp({
             data(){
                 return {
                     js2020: 'JavaScript 2020 新特性',
                     js2021: 'JavaScript 2021 新特性',
+                    d2a: 'debounce and throttle（防抖与节流）',
                 }
             },
             methods: {
@@ -200,8 +218,40 @@
                         }
                     }
                     console.log(Circle.area(3));
+                },
+                deb(){
+                    console.warn('防抖按钮被点击');
+                    // console.log(this);
+                },
+                debounce(func, delay){
+                    let self = this;
+                    let args = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(function(){
+                        func.apply(self, args);
+                    },delay);
+                },
+                thr(){
+                    let r = Math.floor(Math.random()*255);
+                    let g = Math.floor(Math.random()*255);
+                    let b = Math.floor(Math.random()*255);
+                    let txtColor;
+                    if(r>110 && g>110 && b>110){
+                        txtColor = '#222';
+                    } else {
+                        txtColor = '#fff';
+                    }
+                    const style = `color: ${txtColor};background-color: rgb(${r},${g},${b});padding: 2px 6px;border-radius: 5px;`;
+                    console.log('%c节流事件',style);
+                },
+                throttle(func, delay){
+                    if(timer2) return; // timer2被赋值了，直接返回，如果timer2为 null，执行下面赋值操作 ！！！
+                    timer2 = setTimeout(function(){
+                        func();
+                        timer2 = null;
+                    },delay);
                 }
-            },
+            }
         }).mount('#list');
     </script>
 </body>

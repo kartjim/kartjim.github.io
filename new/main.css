@@ -29,9 +29,15 @@ body {
     border-bottom: 1px solid #afafaf;
     padding: 20px;
 }
+/* 防抖与节流 */
+.debounceAthrottling{
+    padding: 10px 20px;
+}
+
 /* js2021 */
 .js2021{
     padding: 20px;
+    border-bottom: 1px solid #afafaf;
 }
 /* public */
 ol{
@@ -40,7 +46,7 @@ ol{
 ol li{
     margin-bottom: 10px;
     max-width: 100%;
-    overflow: auto;
+    /* overflow: auto; */
 }
 ol li .newName{
     margin-bottom: 10px;
