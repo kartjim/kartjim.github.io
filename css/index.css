@@ -1,11 +1,12 @@
 body{
-    height: 95vh;
+    min-height: 95vh;
     background-color: #f0f7ff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .link{
+    margin: 50px 0;
     background-color: #fff;
     width: 50%;
     border-radius: 10px;

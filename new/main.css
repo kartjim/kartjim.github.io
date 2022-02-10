@@ -25,20 +25,14 @@ body {
     background-color: #dfdfdf;
 }
 /* js2020 */
-.js2020{
+.js2020,.js2021,.debounceAthrottling{
     border-bottom: 1px solid #afafaf;
-    padding: 20px;
+    padding: 10px 20px;
 }
-/* 防抖与节流 */
-.debounceAthrottling{
+.arrow{
     padding: 10px 20px;
 }
 
-/* js2021 */
-.js2021{
-    padding: 20px;
-    border-bottom: 1px solid #afafaf;
-}
 /* public */
 ol{
     padding-left: 30px;
@@ -99,4 +93,10 @@ pre code{
     color: rgb(4, 4, 65);
     font-family: Roboto Mono,serif;
 }
-
+.code{
+    background-color: #f6f6f6;
+    padding: 0 5px;
+    border-radius: 5px;
+    margin: 0 4px;
+    color: rgb(160, 13, 13);
+}

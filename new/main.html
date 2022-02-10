@@ -130,6 +130,57 @@
                 </li>
             </ol>
         </div>
+        <div class="arrow">
+            <h2>{{ arrow }}</h2>
+            <ol>
+                <li>
+                    <div class="newName">箭头函数与普通函数的区别</div>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>普通函数</td>
+                            <td>箭头函数</td>
+                        </tr>
+                        <tr>
+                            <td>基本格式</td>
+                            <td><span class="code">function(){}</span></td>
+                            <td><span class="code">()=>{}</span></td>
+                        </tr>
+                        <tr>
+                            <td>区别</td>
+                            <td colspan="2">
+                                <ol>
+                                    <li>箭头函数不能用 <span class="code">new</span> 来创建构造函数的实例，而普通函数可以</li>
+                                    <li>箭头函数没有<span class="code">arguments</span>对象</li>
+                                    <li>普通函数的<span class="code">this</span>指向是动态的，而箭头函数的<span class="code">this</span>是定时决定的。</li>
+                                    <li>箭头函数不能通过<span class="code">bind</span>、<span class="code">call</span>、<span class="code">apply</span>来改变<span class="code">this</span>的值</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>new和原型</td>
+                            <td>有</td>
+                            <td>没有</td>
+                        </tr>
+                        <tr>
+                            <td>arguments，super</td>
+                            <td>有</td>
+                            <td>没有，需调用外围</td>
+                        </tr>
+                        <tr>
+                            <td>this指向</td>
+                            <td>动态</td>
+                            <td>一般是全局对象，被普通函数包含指向上一层</td>
+                        </tr>
+                        <tr>
+                            <td>apply、call、bind</td>
+                            <td>修改this的值</td>
+                            <td>不可修改this的值</td>
+                        </tr>
+                    </table>
+                </li>
+            </ol>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script>
@@ -140,6 +191,7 @@
                     js2020: 'JavaScript 2020 新特性',
                     js2021: 'JavaScript 2021 新特性',
                     d2a: 'debounce and throttle（防抖与节流）',
+                    arrow: '箭头函数'
                 }
             },
             methods: {

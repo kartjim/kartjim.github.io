@@ -8,6 +8,7 @@ const listApp = Vue.createApp({
                 {id: 2, title: 'TodoList', link: './todo/todoList.html'},
                 {id: 3, title: 'Color Pick', link: './color/index.html'},
                 {id: 4, title: 'JavaScript新特性', link: './new/main.html'},
+                {id: 5, title: 'Grid 布局', link: './pages/grid.html'},
             ]
         }
     }
